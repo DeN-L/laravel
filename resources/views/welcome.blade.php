@@ -93,6 +93,7 @@
                     <a href="https://forge.laravel.com">Forge</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
                     <a href="/about">Ebaut</a>
+                    <a href="blade">Blade</a>
                 </div>
             </div>
         </div>

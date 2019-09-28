@@ -21,3 +21,7 @@ Route::get('/about', function () {
         'text' => 'Ebaut Us'
     ]);
 });
+
+Route::get('blade', function () {
+    return view('child');
+});

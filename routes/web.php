@@ -25,3 +25,7 @@ Route::get('/about', function () {
 Route::get('blade', function () {
     return view('child');
 });
+
+Route::get('/blog', 'ArticleController@index')->name('articles');
+
+Route::get('/blog/{id}', 'ArticleController@show');

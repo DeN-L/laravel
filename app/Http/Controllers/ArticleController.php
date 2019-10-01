@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\ArticleModel;
 use Illuminate\Http\Request;
 
-class FirstController extends Controller
+class ArticleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +14,10 @@ class FirstController extends Controller
      */
     public function index()
     {
-        return 'Yii2 the best!';
+        $x_articles = ArticleModel::all();
+        return view('frontend.blog.index', [
+            'x_articles' => $x_articles
+        ]);
     }
 
     /**
@@ -40,21 +44,26 @@ class FirstController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(int $id)
     {
-        //
+        $o_article = ArticleModel::find($id);
+        return view('frontend/blog/show', [
+            'html_id' => $o_article->id,
+            'html_title' => $o_article->title,
+            'html_text' => $o_article->text
+        ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\ArticleModel  $articleModel
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(ArticleModel $articleModel)
     {
         //
     }
@@ -63,10 +72,10 @@ class FirstController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\ArticleModel  $articleModel
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, ArticleModel $articleModel)
     {
         //
     }
@@ -74,10 +83,10 @@ class FirstController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\ArticleModel  $articleModel
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(ArticleModel $articleModel)
     {
         //
     }

@@ -29,3 +29,11 @@ Route::get('blade', function () {
 Route::get('/blog', 'ArticleController@index')->name('articles');
 
 Route::get('/blog/{id}', 'ArticleController@show');
+
+// Routes for backend.
+Route::get('/admin/blog', 'ArticleBackend@index');
+Route::get('/admin/blog/{id}', 'ArticleBackend@show');
+Route::get('/admin/blog/create', 'ArticleBackend@create')->name('article_create');
+Route::get('/admin/blog/edit/{id}', 'ArticleBackend@update')->name('article_edit');
+Route::get('/admin/blog/delete/{id}', 'ArticleBackend@destroy')->name('article_delete');
+Route::post('/admin/blog/store', 'ArticleBackend@store');

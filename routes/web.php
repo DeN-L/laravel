@@ -37,3 +37,7 @@ Route::get('/admin/blog/create', 'ArticleBackend@create')->name('article_create'
 Route::get('/admin/blog/edit/{id}', 'ArticleBackend@update')->name('article_edit');
 Route::get('/admin/blog/delete/{id}', 'ArticleBackend@destroy')->name('article_delete');
 Route::post('/admin/blog/store', 'ArticleBackend@store');
+
+// API Routs.
+Route::get('/api/blog', 'ApiController@getAll');
+Route::get('/api/blog/{id}', 'ApiController@getArticle');

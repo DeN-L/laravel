@@ -41,3 +41,6 @@ Route::post('/admin/blog/store', 'ArticleBackend@store');
 // API Routs.
 Route::get('/api/blog', 'ApiController@getAll');
 Route::get('/api/blog/{id}', 'ApiController@getArticle');
+
+// Categories.
+Route::get('/admin/category', 'CategoryController@index');

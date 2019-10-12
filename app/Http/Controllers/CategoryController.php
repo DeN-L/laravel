@@ -63,11 +63,13 @@ class CategoryController extends Controller
             'k_category' => $k_category
         ]);
 
+        $o_category = Category::find($k_category);
+
         return view('backend.category.show', [
-            'html_id' => $a_category[0]->k_category,
-            'html_name' => $a_category[0]->text_name,
-            'html_description' => $a_category[0]->text_description,
-            'html_name_parent' => $a_category[0]->text_name_parent,
+            'html_id' => $o_category->k_category, // $a_category[0]->k_category,
+            'html_name' => $o_category->text_name, // $a_category[0]->text_name,
+            'html_description' => $o_category->text_description,
+            'html_name_parent' => isset($o_category->parentCategory) ? $o_category->parentCategory->text_name : '', // Данные из связанной записи.
         ]);
     }
 

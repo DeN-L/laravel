@@ -44,3 +44,8 @@ Route::get('/api/blog/{id}', 'ApiController@getArticle');
 
 // Categories.
 Route::get('/admin/category', 'CategoryController@index');
+Route::get('/admin/category/create', 'CategoryController@create');
+Route::get('/admin/category/{id}', 'CategoryController@show');
+Route::get('/admin/category/edit/{id}', 'CategoryController@update');
+Route::get('/admin/category/delete/{id}', 'CategoryController@destroy');
+Route::post('/admin/category/store', 'CategoryController@store');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
 {
@@ -25,7 +26,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        $o_categories = Category::all();
+        return view('backend.category.create', ['o_categories' => $o_categories]);
     }
 
     /**
@@ -42,12 +44,31 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Category  $category
+     * @param string $k_category
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show(string $k_category)
     {
-        //
+        $a_category = DB::select('
+            SELECT
+                categories.*,
+                parent_name.text_name as text_name_parent
+            FROM 
+                categories left join 
+                categories as parent_name on
+                    categories.k_category_parent=parent_name.k_category
+            WHERE
+                categories.k_category=:k_category
+        ', [
+            'k_category' => $k_category
+        ]);
+
+        return view('backend.category.show', [
+            'html_id' => $a_category[0]->k_category,
+            'html_name' => $a_category[0]->text_name,
+            'html_description' => $a_category[0]->text_description,
+            'html_name_parent' => $a_category[0]->text_name_parent,
+        ]);
     }
 
     /**
@@ -63,14 +84,17 @@ class CategoryController extends Controller
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Category  $category
-     * @return \Illuminate\Http\Response
+     * @param string $k_category
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function update(Request $request, Category $category)
+    public function update(string $k_category)
     {
-        //
+        $o_categories = Category::all();
+        $o_category_edit = $o_categories->find($k_category);
+        return view('backend.category.create', [
+            'o_categories' => $o_categories,
+            'o_category_edit' => $o_category_edit
+        ]);
     }
 
     /**

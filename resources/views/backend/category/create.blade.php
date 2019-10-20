@@ -26,7 +26,7 @@
         </div>
         <br>
         <div>
-            <select>
+            <select name="parent-category">
                 <option value="0">-Родительская категория-</option>
                 @foreach($o_categories as $o_category)
                     <option

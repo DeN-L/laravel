@@ -94,6 +94,7 @@
                     <a href="https://github.com/laravel/laravel">GitHub</a>
                     <a href="/about">Ebaut</a>
                     <a href="blade">Blade</a>
+                    <a href="admin">Backend</a>
                 </div>
             </div>
         </div>

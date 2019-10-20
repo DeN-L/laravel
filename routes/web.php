@@ -31,6 +31,9 @@ Route::get('/blog', 'ArticleController@index')->name('articles');
 Route::get('/blog/{id}', 'ArticleController@show');
 
 // Routes for backend.
+Route::get('/admin', function () {
+    return view('backend.index');
+});
 Route::get('/admin/blog', 'ArticleBackend@index');
 Route::get('/admin/blog/{id}', 'ArticleBackend@show');
 Route::get('/admin/blog/create', 'ArticleBackend@create')->name('article_create');
